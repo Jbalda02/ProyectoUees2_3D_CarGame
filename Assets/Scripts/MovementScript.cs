@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MovementScript : MonoBehaviour
 { 
@@ -49,6 +51,13 @@ public class MovementScript : MonoBehaviour
         isMoving = false;
     }
     }
-    
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("DeadZone"))
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
+    }
 }
 
